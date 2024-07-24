@@ -14,13 +14,13 @@ void loop() {
   if (Serial.available() > 0) {
     String command = Serial.readStringUntil('\n');
 
-    if (command == "1. lamba aç") {
+    if (command == "1. motor aç") {
       digitalWrite(RELAY1, LOW); // Röle tetiklenir (aktif)
-    } else if (command == "1. lamba kapat") {
+    } else if (command == "1. motor kapat") {
       digitalWrite(RELAY1, HIGH); // Röle kapatılır (pasif)
-    } else if (command == "2. lamba aç") {
+    } else if (command == "2. motor aç") {
       digitalWrite(RELAY2, LOW); // Röle tetiklenir (aktif)
-    } else if (command == "2. lamba kapat") {
+    } else if (command == "2. motor kapat") {
       digitalWrite(RELAY2, HIGH); // Röle kapatılır (pasif)
     }
   }
