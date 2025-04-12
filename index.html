@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>ROBO Pro Web IDE</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+</head>
+<body>
+  <h1>Fischertechnik ROBO Pro Web IDE</h1>
+
+  <label for="projectName">Proje Adı: </label>
+  <input type="text" id="projectName" value="MyProgram" />
+
+  <br/>
+
+  <button onclick="generateRPP()">💾 Kaydet ve İndir (.rpp)</button>
+  <button onclick="sendViaBLE()">📡 BLE ile Gönder (.rpp)</button>
+
+  <div id="blocklyDiv" style="height: 600px; width: 100%; margin-top: 20px;"></div>
+
+  <xml id="toolbox" style="display: none">
+    <category name="Motor">
+      <block type="motor_on"></block>
+      <block type="motor_off"></block>
+    </category>
+    <category name="Kontrol">
+      <block type="wait"></block>
+      <block type="controls_if"></block>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number"><field name="NUM">3</field></shadow>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+    </category>
+    <category name="Mantık">
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_boolean"></block>
+    </category>
+    <category name="Giriş">
+      <block type="input_digital"></block>
+    </category>
+    <category name="Matematik">
+      <block type="math_number"></block>
+      <block type="math_arithmetic"></block>
+    </category>
+  </xml>
+
+  <script src="blocks.js"></script>
+  <script src="generator.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    const workspace = Blockly.inject('blocklyDiv', {
+      toolbox: document.getElementById('toolbox')
+    });
+  </script>
+</body>
+</html>
